@@ -17,7 +17,7 @@ export default class Countdown extends React.Component<
     this.state = {
       date: props.date || new Date(Date.now() + 86400000),
       now: new Date(),
-      errorMsg: ''
+      errorMsg: "",
     };
   }
 
@@ -36,17 +36,17 @@ export default class Countdown extends React.Component<
   }
 
   setInputDate(e: SyntheticEvent<HTMLInputElement>) {
-    e.preventDefault()
-    const value = (e.target as HTMLInputElement).value
+    e.preventDefault();
+    const value = (e.target as HTMLInputElement).value;
     if (/^\d\d\d\d-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01])$/.test(value)) {
       this.setState({
         date: new Date(value),
-        errorMsg: ''
-      })
+        errorMsg: "",
+      });
     } else {
       this.setState({
-        errorMsg: 'Please input Date string like YYYY-MM-DD'
-      })
+        errorMsg: "Please input Date string like YYYY-MM-DD",
+      });
     }
   }
 
@@ -68,8 +68,15 @@ export default class Countdown extends React.Component<
           seconds
         </p>
         <div>
-          <input type="text" style={{color: "black"}} placeholder="Input new target date" onChange={this.setInputDate.bind(this)}/>
-          <p style={{color: 'red'}}>{this.state.errorMsg}</p>
+          <input
+            type="text"
+            style={{ color: "black" }}
+            placeholder="Input new target date"
+            onChange={this.setInputDate.bind(this)}
+          />
+        </div>
+        <div>
+          <p style={{ color: "red" }}>{this.state.errorMsg}</p>
         </div>
       </div>
     );
